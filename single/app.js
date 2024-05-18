@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const TABLE_NAME = process.env.TABLE_NAME
+const TABLE_NAME = process.env.TABLE_NAME.toUpperCase()
 
 let files = fs.readdirSync('./source/labels')
   .filter(item => path.extname(item) === '.js')
