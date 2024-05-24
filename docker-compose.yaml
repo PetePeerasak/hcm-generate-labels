@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  multiple-project:
+    container_name: hcm-generate-labels-multiple-project
+    image: hcm-generate-labels
+    build:
+      context: ./multiple-project
+    volumes:
+      - ./multiple-project/app/:/go/github.com/PetePeerasak/app
+    tty: true
