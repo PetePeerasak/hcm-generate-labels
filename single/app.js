@@ -22,7 +22,15 @@ for (const file of files) {
 
   for (const fnName in labels[lange]) {
     for (const index in labels[lange][fnName]) {
-      message += `INSERT INTO ${TABLE_NAME} VALUES ('${fnName}',${index},NULL,'${labels['en'][fnName][index]}','${labels['th'][fnName][index]}','${labels['103'][fnName][index]}','${labels['104'][fnName][index]}','${labels['105'][fnName][index]}',SYSDATE,NULL,SYSDATE,'TJS00001');\n`
+      let name = {
+        en: labels['en'][fnName][index].replace("'", "''"),
+        th: labels['th'][fnName][index].replace("'", "''"),
+        103: labels['103'][fnName][index].replace("'", "''"),
+        104: labels['104'][fnName][index].replace("'", "''"),
+        104: labels['104'][fnName][index].replace("'", "''")
+      }
+
+      message += `INSERT INTO ${TABLE_NAME} VALUES ('${fnName}',${index},NULL,'${name['en']}','${name['th']}','${name['103']}','${name['104']}','${name['105']}',SYSDATE,NULL,SYSDATE,'TJS00001');\n`
     }
   }
 
