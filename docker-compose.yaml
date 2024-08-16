@@ -1,0 +1,11 @@
+services:
+  single:
+    container_name: hcm-generate-labels-single-project
+    image: node:alpine3.19
+    environment:
+      - TABLE_NAME=TAPPLSCR
+    volumes:
+      - ./single:/home/node/app
+    user: node
+    working_dir: /home/node/app
+    command: ["node", "app.js"]
