@@ -1,7 +1,7 @@
 services:
   single:
     container_name: hcm-generate-labels-single-project
-    image: node:alpine3.19
+    image: node:lts-alpine3.20
     environment:
       - TABLE_NAME=TAPPLSCR
     volumes:
@@ -9,3 +9,15 @@ services:
     user: node
     working_dir: /home/node/app
     command: ["node", "app.js"]
+
+  convert-statement:
+    container_name: hcm-generate-labels-convert-sql-statement
+    image: node:lts-alpine3.20
+    environment:
+      - HOME_DIR=/home/node
+    volumes:
+      - ./statement/app:/home/node/app
+      - ./statement/source:/home/node/source
+    user: node
+    working_dir: /home/node/app
+    command: ["npm", "start"]
