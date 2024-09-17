@@ -27,7 +27,7 @@ for (const file of files) {
         th: labels['th'][fnName][index].replace("'", "''"),
         103: labels['103'][fnName][index].replace("'", "''"),
         104: labels['104'][fnName][index].replace("'", "''"),
-        104: labels['104'][fnName][index].replace("'", "''")
+        105: labels['105'][fnName][index].replace("'", "''")
       }
 
       message += `INSERT INTO ${TABLE_NAME} VALUES ('${fnName}',${index},NULL,'${name['en']}','${name['th']}','${name['103']}','${name['104']}','${name['105']}',SYSDATE,NULL,SYSDATE,'TJS00001');\n`
