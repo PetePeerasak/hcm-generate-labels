@@ -1,1 +1,4 @@
 .env
+
+statement/app/node_modules
+statement/app/package-lock.json
