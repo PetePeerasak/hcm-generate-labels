@@ -17,7 +17,7 @@ for (const file of files) {
   const fileName = getFilename(file)
 
   for (const label of Object.keys(labels[lange])) {
-    message += `DELETE FROM ${TABLE_NAME} WHERE CODAPP='${label.toUpperCase()}';\n`
+    message += `DELETE FROM ${TABLE_NAME} WHERE CODAPP='${label.toUpperCase()}' AND (TYPSCR IS NULL OR TYPSCR <> 'Y');\n`
   }
 
   for (const fnName in labels[lange]) {
