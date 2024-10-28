@@ -2,3 +2,9 @@
 
 statement/app/node_modules
 statement/app/package-lock.json
+
+source/single/labels
+source/single/dist
+
+source/statement/labels
+source/statement/dist

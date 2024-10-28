@@ -5,19 +5,20 @@ services:
     environment:
       - TABLE_NAME=TAPPLSCR
     volumes:
-      - ./single:/home/node/app
+      - ./single/app.js:/home/node/app/app.js
+      - ./source/single:/home/node/app/source
     user: node
     working_dir: /home/node/app
     command: ["node", "app.js"]
 
-  convert-statement:
-    container_name: hcm-generate-labels-convert-sql-statement
+  statement:
+    container_name: hcm-generate-labels-sql-statement
     image: node:lts-alpine3.20
     environment:
       - HOME_DIR=/home/node
     volumes:
       - ./statement/app:/home/node/app
-      - ./statement/source:/home/node/source
+      - ./source/statement:/home/node/source
     user: node
     working_dir: /home/node/app
     command: ["npm", "start"]
