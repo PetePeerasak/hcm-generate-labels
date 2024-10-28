@@ -27,18 +27,15 @@ const language = ['en', 'th']
 const splitStringToArray = (statement, arrItems = []) => {
   const singleLines = statement.split('\n')
   const singleQuteRegex = /'[^']*'/g;
-  const valuesRegex = /values\s*\(([^)]*)\)/
+  const valuesRegex = /values\s*\(([^)]*)\)/i;
 
   return new Promise(resolve => {
     singleLines.forEach(message => {
-      message = message.toLowerCase()
       const match = message.match(valuesRegex)
-      let target = message
+      const inSingleQute = message.match(singleQuteRegex)
 
-      if (match) {
-        const inSingleQute = target.match(singleQuteRegex)
+      if (match && inSingleQute) {
         const values = match[1].split(',')
-
         const codapp = inSingleQute[0].toUpperCase() ?? ''
         const numseq = values[1]
         const typscr = values[2]
@@ -47,13 +44,11 @@ const splitStringToArray = (statement, arrItems = []) => {
         const dteupd = values[values.length - 2]
         const coduser = values[values.length - 1]
 
-        if (inSingleQute) {
-          arrItems.push([
-            codapp, numseq, typscr,
-            inSingleQute[1], inSingleQute[2], inSingleQute[3], inSingleQute[4], inSingleQute[5],
-            dtecreate, codcreate, dteupd, coduser
-          ])
-        }
+        arrItems.push([
+          codapp, numseq, typscr,
+          inSingleQute[1], inSingleQute[2], inSingleQute[3], inSingleQute[4], inSingleQute[5],
+          dtecreate, codcreate, dteupd, coduser
+        ])
       }
     })
 
